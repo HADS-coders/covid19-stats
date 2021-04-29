@@ -29,25 +29,29 @@ def getData(index,countryList):
 def index(request):
 
     countryList = []
-    context={}
+    worldwide = {}
+    context = {}
     noofresults = int(response['results'])
+    allStatIndex = 0
+    
     for x in range(0, noofresults):
         countryList.append(response['response'][x]['country'])
+        if response['response'][x]['country']=='All':
+            allStatIndex = x
+
+    countryList.sort()
 
     if request.method=="POST":
+        print('in if')
         selectedcountry = request.POST['selectedcountry']
         print(selectedcountry)
         noofresults = int(response['results'])
         for x in range(0,noofresults):
             if selectedcountry==response['response'][x]['country']:
-                context=getData(x,countryList)
+                context=getData(x,countryList)   
         return render(request, 'index.html', context)
 
-    elif noofresults>1:
-        context=getData(0,countryList)
-        return render(request,'index.html',context)
-
-    context={'mylist': countryList}
+    context = getData(allStatIndex,countryList)
     return render(request,'index.html',context)
 
     
