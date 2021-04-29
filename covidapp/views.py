@@ -16,13 +16,13 @@ response = requests.request("GET", url, headers=headers).json()
 
 ## Function to get Data from response and return the dictionary
 def getData(index,countryList):
-    selectedCountry=response['response'][index]['country']
-    new=response['response'][index]['cases']['new']
-    active=response['response'][index]['cases']['active']
-    critical=response['response'][index]['cases']['critical']
-    recovered=response['response'][index]['cases']['recovered']
-    total=response['response'][index]['cases']['total']
-    deaths= int(total) - int(active)-int(recovered)
+    selectedCountry = response['response'][index]['country']
+    new = response['response'][index]['cases']['new'] if response['response'][index]['cases']['new'] else 0
+    active = response['response'][index]['cases']['active'] if response['response'][index]['cases']['active'] else 0
+    critical = response['response'][index]['cases']['critical'] if response['response'][index]['cases']['critical'] else 0
+    recovered = response['response'][index]['cases']['recovered'] if response['response'][index]['cases']['recovered'] else 0
+    total = response['response'][index]['cases']['total'] if response['response'][index]['cases']['total'] else 0
+    deaths = int(total) - int(active)-int(recovered)
     return {'selectedcountry':selectedCountry ,'mylist':countryList,'new':new,'active':active,'critical':critical,'recovered':recovered,'deaths':deaths,'total':total}
 
 
@@ -44,11 +44,10 @@ def index(request):
     if request.method=="POST":
         print('in if')
         selectedcountry = request.POST['selectedcountry']
-        print(selectedcountry)
         noofresults = int(response['results'])
         for x in range(0,noofresults):
-            if selectedcountry==response['response'][x]['country']:
-                context=getData(x,countryList)   
+            if selectedcountry == response['response'][x]['country']:
+                context=getData(x,countryList)
         return render(request, 'index.html', context)
 
     context = getData(allStatIndex,countryList)
