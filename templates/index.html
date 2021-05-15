@@ -7,6 +7,7 @@
 </head>
 <style type="text/css">
     .container{
+        padding: 20px;
     margin-top: 40px;
     margin-bottom:40px;
     }
@@ -31,30 +32,37 @@
 
 <h1 style="margin:100px 0;color:white;text-align:center">{{selectedcountry}}</h1>
 <div class="d-flex justify-content-center align-items-center">
-    <div class="container" style="border-radius:10px;background-color:orange;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center">{{total}}</h1>
+    <div class="container" style="border-radius:10px;background-color:orange;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.total}}%</p>
+        <h1 style="text-align:center">{{latestData.total}}</h1>
         <p style="text-align:center">Total cases</p>
     </div>
-    <div class="container" style=" border-radius:10px;background-color:green;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center;color:white">{{recovered}}</h1>
+    <div class="container" style=" border-radius:10px;background-color:green;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.recovered}}%</p>
+        <h1 style="text-align:center;color:white">{{latestData.recovered}}</h1>
         <p style="text-align:center;color:white">Recovered</p>
-    </div><div class="container" style="border-radius:10px;background-color:yellow;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center">{{active}}</h1>
+    </div><div class="container" style="border-radius:10px;background-color:yellow;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.active}}%</p>
+        <h1 style="text-align:center">{{latestData.active}}</h1>
         <p style="text-align:center">Active</p>
     </div>
 </div>
 <div class="d-flex justify-content-center align-items-center">
-    <div class="container" style="border-radius:10px;background-color:skyblue;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center">{{new}}</h1>
+    <div class="container" style="border-radius:10px;background-color:skyblue;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.new}}%</p>
+        <h1 style="text-align:center">{{latestData.new}}</h1>
         <p style="text-align:center">New</p>
-    </div><div class="container" style="border-radius:10px;background-color:grey;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center;color:white">{{deaths}}</h1>
+    </div><div class="container" style="border-radius:10px;background-color:grey;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.deaths}}%</p>
+        <h1 style="text-align:center;color:white">{{latestData.deaths}}</h1>
         <p style="text-align:center;color:white">Deaths</p>
-    </div><div class="container" style="border-radius:10px;background-color:red;min-height:100px;min-width:200px;width: fit-content;">
-        <h1 style="text-align:center;color:white">{{critical}}</h1>
+    </div><div class="container" style="border-radius:10px;background-color:red;width: 250px;">
+        <p style="text-align:center">{{dayBeforeData.critical}}%</p>
+        <h1 style="text-align:center;color:white">{{latestData.critical}}</h1>
         <p style="text-align:center;color:white">Critical</p>
     </div>
 </div>
-<p style=" margin-top:100px;color:grey;text-align:center">Developed By <span style="color:white">Group 3</span></p>
+<p style=" margin-top:50px;color:grey;text-align:center">*The percentage change is calculated from a day before data.</p>
+<p style=" margin-top:50px;color:grey;text-align:center">Developed By <span style="color:white">Group 3</span></p>
 </body>
 </html>
